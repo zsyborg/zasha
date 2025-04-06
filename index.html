@@ -1,0 +1,1101 @@
+<html style="--wm-toolbar-height: 67px;" lang="en-US" dir="ltr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="index_files/athena.js" type="text/javascript"></script>
+<script type="text/javascript">var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+let window = _____WB$wombat$assign$function_____("window");
+let globalThis = _____WB$wombat$assign$function_____("globalThis");
+let self = _____WB$wombat$assign$function_____("self");
+let document = _____WB$wombat$assign$function_____("document");
+let location = _____WB$wombat$assign$function_____("location");
+let top = _____WB$wombat$assign$function_____("top");
+let parent = _____WB$wombat$assign$function_____("parent");
+let frames = _____WB$wombat$assign$function_____("frames");
+let opener = _____WB$wombat$assign$function_____("opener");
+{
+window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app28.us.archive.org';v.server_ms=736;archive_analytics.send_pageview({});});
+
+}}</script>
+<script type="text/javascript" src="index_files/bundle-playback.js" charset="utf-8"></script>
+<script type="text/javascript" src="index_files/wombat.js" charset="utf-8"></script>
+<script>var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+let window = _____WB$wombat$assign$function_____("window");
+let globalThis = _____WB$wombat$assign$function_____("globalThis");
+let self = _____WB$wombat$assign$function_____("self");
+let document = _____WB$wombat$assign$function_____("document");
+let location = _____WB$wombat$assign$function_____("location");
+let top = _____WB$wombat$assign$function_____("top");
+let parent = _____WB$wombat$assign$function_____("parent");
+let frames = _____WB$wombat$assign$function_____("frames");
+let opener = _____WB$wombat$assign$function_____("opener");
+{
+window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};
+
+}}</script>
+<script type="text/javascript" src="index_files/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://zahidshaikh.com/","20210623013400","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1624412040");
+</script>
+<link rel="stylesheet" type="text/css" href="index_files/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="index_files/iconochive.css">
+<!-- End Wayback Rewrite JS Include -->
+<script defer="defer">var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+let window = _____WB$wombat$assign$function_____("window");
+let globalThis = _____WB$wombat$assign$function_____("globalThis");
+let self = _____WB$wombat$assign$function_____("self");
+let document = _____WB$wombat$assign$function_____("document");
+let location = _____WB$wombat$assign$function_____("location");
+let top = _____WB$wombat$assign$function_____("top");
+let parent = _____WB$wombat$assign$function_____("parent");
+let frames = _____WB$wombat$assign$function_____("frames");
+let opener = _____WB$wombat$assign$function_____("opener");
+{
+(function () {
+        // get the ignore list from php
+        var ignoreList = [];
+        // script only (live.js)
+        var headers = { "Etag": 1, "Last-Modified": 1, "Content-Length": 1, "Content-Type": 1 },
+            resources = {},
+            pendingRequests = {},
+            currentLinkElements = {},
+            interval = 1000,
+            loaded = false,
+            phperror = false,
+            active = { "html": 1, "js": 1, "css": 1 },
+            currentHeartBeat = undefined;
+        var Live = {
+          // performs a cycle per interval
+          heartbeat: function () {
+            if (document.body) {
+              // make sure all resources are loaded on first activation
+              if (!loaded) Live.loadresources();
+              Live.checkForChanges();
+            }
+            // if the checker is not active, activates it
+            if (!currentHeartBeat) setTimeout(Live.heartbeat, interval);
+          },
+          // loads all local css and js resources upon first activation
+          loadresources: function () {
+            // helper method to assert if a given url is local
+            function isLocal(url) {
+              var loc = document.location,
+                  reg = new RegExp("^\\.|^\/(?!\/)|^[\\w]((?!://).)*$|" + loc.protocol + "//" + loc.host);
+              return url.match(reg);
+            }
+            // gather all resources
+            var scripts = document.getElementsByTagName("script"),
+                links = document.getElementsByTagName("link"),
+                uris = [];
+            // track local js urls
+            for (var i = 0; i < scripts.length; i++) {
+              var script = scripts[i], src = script.getAttribute("src");
+              // check if the script folder are not in the ignore list or if
+              // of if the script src are not in the ignore list or if the
+              // script hasnt the hidden attribute. if true, ignore the tag
+              if(script.hidden || ignoreList.includes(script.baseURI) || ignoreList.includes(src)) {
+                continue;
+              }
+              // if the script wasnt ignored
+              if (src && isLocal(src))
+                uris.push(src);
+              if (src && src.match(/\blive.js#/)) {
+                for (var type in active)
+                  active[type] = src.match("[#,|]" + type) != null
+                if (src.match("notify"))
+                  alert("Live.js is loaded.");
+              }
+            }
+            if (!active.js) uris = [];
+            if (active.html) uris.push(document.location.href);
+            // track local css urls
+            for (var i = 0; i < links.length && active.css; i++) {
+              var link = links[i], rel = link.getAttribute("rel"), href = link.getAttribute("href", 2);
+              // check if the link folder are not in the ignore list or if
+              // of if the link src are not in the ignore list or if the
+              // link hasnt the hidden attribute. if true, ignore the tag
+              if(link.hidden || ignoreList.includes(link.baseURI) || ignoreList.includes(href)) {
+                continue;
+              }
+              // if the link tag wasnt ignored
+              if (href && isLocal(href)) {
+                uris.push(href);
+                currentLinkElements[href] = link;
+              }
+            }
+            // initialize the resources info
+            for (var i = 0; i < uris.length; i++) {
+              // check if the script/link src/href are in ignore list
+              // if not finally add the element to resources list
+              if(!ignoreList.includes(uris[i])){
+                var url = uris[i];
+                Live.getHead(url, function (url, info) {
+                  resources[url] = info;
+                });
+              }
+            }
+            // yep
+            loaded = true;
+          },
+          getHTML: function ( url, callback ) {
+            // Feature detection
+            if ( !window.XMLHttpRequest ) return;
+            // Create new request
+            var xhr = new XMLHttpRequest();
+            // Setup callback
+            xhr.onload = function() {
+              if ( callback && typeof( callback ) === 'function' ) {
+                callback( this.responseXML );
+              }
+            }
+            // Get the HTML
+            xhr.open( 'GET', url );
+            xhr.responseType = 'document';
+            xhr.send();
+          },
+          checkBackEndFails: function(newInfo, oldInfo) {
+            /*
+              this little section try to catch errors
+              from the backend that could break the watcher
+              before the page reloads. if the newInfo key has
+              sended and Etag, Last-Modified and Content-Length
+              are null, and the Content-Type = "text/html", this
+              Means a possible back end error on code, so we
+              stop the reloadings a little and console the
+              possible error. Then, we will get the current page
+              content with a xhr request and dinamically print its
+              content on screen, overwriting the current one.
+              This will output the error, if has one withou break
+              out script. This is an special situation of error.
+            */
+            if(newInfo['Content-Type'] == 'text/html'){
+              if(newInfo['Etag'] == null && newInfo['Last-Modified'] == null && newInfo['Content-Length'] == null){
+                Live.getHTML( window.location.href, function (response) {
+                  if(document.documentElement.innerHTML != response.documentElement.innerHTML) {
+                    document.documentElement.innerHTML = response.documentElement.innerHTML;
+                    if(!phperror){
+                      console.error("Hot Reloader tracked a possible error on your back end code");
+                    }
+                  }
+                });
+                phperror = true;
+              }
+            }
+          },
+          // check all tracking resources for changes
+          checkForChanges: function () {
+            for (var url in resources) {
+              if (pendingRequests[url])
+                continue;
+              Live.getHead(url, function (url, newInfo) {
+                var oldInfo = resources[url],
+                    hasChanged = false;
+                resources[url] = newInfo;
+                // Check for back end fails
+                Live.checkBackEndFails(newInfo, oldInfo);
+                // If content exists, and is not totally empty:
+                for (var header in oldInfo) {
+                  // do verification based on the header type
+                  var oldValue = oldInfo[header],
+                      newValue = newInfo[header],
+                      contentType = newInfo["Content-Type"];
+                  switch (header.toLowerCase()) {
+                    case "etag":
+                      if (!newValue) break;
+                      // fall through to default
+                    default:
+                      hasChanged = oldValue != newValue;
+                      break;
+                  }
+                  // if changed, act
+                  if (hasChanged) {
+                    Live.refreshResource(url, contentType);
+                    break;
+                  }
+                }
+              });
+            }
+          },
+          // act upon a changed url of certain content type
+          refreshResource: function (url, type) {
+            switch (type.toLowerCase()) {
+              // css files can be reloaded dynamically by adding a hash on its href
+              case "text/css":
+                var link = currentLinkElements[url].setAttribute("href", url + "?now=" + new Date() * 1);
+                break;
+              // check if an html resource is our current url, then reload
+              case "text/html":
+                if (url != document.location.href)
+                  return;
+              // local javascript changes cause a reload as well
+              case "text/javascript":
+              case "application/javascript":
+              case "application/x-javascript":
+                document.location.reload();
+            }
+          },
+          // performs a HEAD request and passes the header info to the given callback
+          getHead: function (url, callback) {
+            pendingRequests[url] = true;
+            var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XmlHttp");
+            xhr.open("HEAD", url, true);
+            xhr.onreadystatechange = function () {
+              // ignore the 404 requests
+              if( xhr.readyState == 4 && xhr.status == "404") return;
+              // if status != 404, proceed
+              delete pendingRequests[url];
+              if (xhr.readyState == 4 && xhr.status != 304) {
+                xhr.getAllResponseHeaders();
+                var info = {};
+                for (var h in headers) {
+                  var value = xhr.getResponseHeader(h);
+                  // adjust the simple Etag variant to match on its significant part
+                  if (h.toLowerCase() == "etag" && value) value = value.replace(/^W\//, '');
+                  if (h.toLowerCase() == "content-type" && value) value = value.replace(/^(.*?);.*?$/i, "$1");
+                  info[h] = value;
+                }
+                callback(url, info);
+              }
+            }
+            xhr.send();
+          }
+        };
+        // start listening
+        if (document.location.protocol != "file:") {
+          if (!window.liveJsLoaded)
+            Live.heartbeat();
+          window.liveJsLoaded = true;
+        }
+        else if (window.console)
+          console.log("Php Hot Reloader: Live.js doesn't support the file protocol. It needs http.");
+      })();
+
+}}</script>
+    <!-- END AND PRINT OF LIVE.JS -->
+    
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+</head><body><div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;" toolbar-mode="auto">
+<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+<div id="donato" style="position:relative;width:100%;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://web.archive.org/web/20210623013400if_/https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3Ahttps%3A//zahidshaikh.com/" scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+      <a href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0"></a>
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="/web/20210623013400mp_/https://zahidshaikh.com/zahidshaikh.com/" onfocus="this.focus();this.select();"><input type="hidden" name="type" value="replay"><input type="hidden" name="date" value="20210623013400"><input type="submit" value="Go">
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                <div class="s" id="wm-nav-captures" style="flex:1;">
+                    <a class="t" href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/" title="See a list of every capture for this URL">77 captures</a>
+          <div class="r" title="Timespan for captures of this URL">08 Oct 2016 - 23 Mar 2025</div>
+          </div>
+        <div class="k">
+          <a href="" id="wm-graph-anchor">
+            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+              <canvas id="wm-sparkline-canvas" width="750" height="27" border="0"></canvas>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+        <tbody>
+          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+          <tr class="m">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/" title="03 Mar 2021"><strong>Mar</strong></a></td>
+            <td class="c" id="displayMonthEl" title="You are here: 01:34:00 Jun 23, 2021">JUN</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/" title="31 Jul 2021"><strong>Jul</strong></a></td>
+          </tr>
+          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+          <tr class="d">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/" title="17:06:16 Mar 03, 2021"><img src="index_files/wm_tb_prv_on.png" alt="Previous capture" width="14" height="16" border="0"></a></td>
+            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 01:34:00 Jun 23, 2021">23</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/" title="17:44:30 Jul 31, 2021"><img src="index_files/wm_tb_nxt_on.png" alt="Next capture" width="14" height="16" border="0"></a></td>
+          </tr>
+          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+          <tr class="y">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20210623013400mp_/http://www.zahidshaikh.com:80/" title="25 Oct 2019"><strong>2019</strong></a></td>
+            <td class="c" id="displayYearEl" title="You are here: 01:34:00 Jun 23, 2021">2021</td>
+            <td class="f" nowrap="nowrap"><a href="https://web.archive.org/web/20210623013400mp_/http://www.zahidshaikh.com/" title="11 Aug 2023"><strong>2023</strong></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+                <span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive">
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://web.archive.org/web/20210623013400mp_/https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+        </span>
+                <a class="xxs" href="https://web.archive.org/web/20210623013400mp_/http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+        <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/screenshot/https://zahidshaikh.com/" id="wm-screenshot" title="screenshot">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+        <a id="wm-share-facebook" href="#" data-url="https://zahidshaikh.com/" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+        <a id="wm-share-twitter" href="#" data-url="https://zahidshaikh.com/" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+        <a id="wm-expand" class="wm-btn wm-closed" href="#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+        <div id="wm-capinfo-notice" source="api"></div>
+                <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://web.archive.org/web/20210623013400/https://archive.org/services/img/commoncrawl)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://web.archive.org/web/20210623013400mp_/https://archive.org/details/commoncrawl" target="_new"><span class="wm-title">Common Crawl</span></a></div>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  Web crawl data from Common Crawl.
+	</div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="index_files/loading.gif" alt="loading"></div>
+    </div>
+    </div>
+  </div></div></div></div><div id="wm-ipp-print">The Wayback Machine - https://zahidshaikh.com/</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(750,27,25,2,"web","https://zahidshaikh.com/","20210623013400",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=p7PEIJWi","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+    
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no">
+      
+<meta name="keywords" content="designer, developer, visual effects, multi talented, zahid, shaikh, mumbai, versova, india">
+<meta name="description" content="Zahid is a skillful personnel, crafting digital solutions to various industries like Motion Graphics &amp; Visual Effects Post Production for Featured Films, Music Videos, Corporate Films, Web Design &amp; Development">
+
+<link rel="canonical" href="https://web.archive.org/web/20210623013400mp_/http://zahidshaikh.com/">
+
+<meta itemprop="name" content="Zahid Shaikh - Visual Effects, Web Design &amp; Development, Digital Artist &amp; Motion Graphics">
+<meta itemprop="description" content="Zahid is a skillful personnel, crafting digital solutions to various industries like Motion Graphics &amp; Visual Effects Post Production for Featured Films, Music Videos, Corporate Films, Web Design &amp; Development.">
+<meta itemprop="image" content="https://zahidshaikh.com/img/za.png">
+
+<meta property="og:locale" content="en">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zahid Shaikh - Visual Effects, Web Design &amp; Development, Digital Artist &amp; Motion Graphics">
+<meta property="og:description" content="Zahid is a skillful personnel, crafting digital solutions to various industries like Motion Graphics &amp; Visual Effects Post Production for Featured Films, Music Videos, Corporate Films, Web Design &amp; Development.">
+<meta property="og:site_name" content="Zahid Shaikh - Zasha">
+
+<meta property="og:url" content="https://zahidshaikh.com/">
+<meta property="og:image" content="https://zahidshaikh.com/img/za.png">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://zahidshaikh.com/">
+<meta name="twitter:title" content="Zahid Shaikh - Visual Effects, Web Design &amp; Development, Digital Artist &amp; Motion Graphics">
+<meta name="twitter:description" content="Zahid is a skillful personnel, crafting digital solutions to various industries like Motion Graphics &amp; Visual Effects Post Production for Featured Films, Music Videos, Corporate Films, Web Design &amp; Development.">
+<meta name="twitter:image" content="https://zahidshaikh.com/img/za.png">
+<meta name="twitter:site" content="@healerza">
+<meta name="twitter:creator" content="@healerza">
+
+<link rel="schema.DC" href="https://web.archive.org/web/20210623013400mp_/http://purl.org/DC/elements/1.0/">
+<meta name="DC.Title" content="Zahid Shaikh - Visual Effects, Web Design &amp; Development, Digital Artist &amp; Motion Graphicss">
+<meta name="DC.Creator" content="Zahid Shaikh">
+<meta name="DC.Type" content="website">
+<meta name="DC.Date" content="2015-10-01">
+<meta name="DC.Format" content="text/html">
+<meta name="DC.Language" content="en">
+
+
+<title>Zahid Shaikh - Visual Effects, Web Design &amp; Development, Digital Artist &amp; Motion Graphics</title>
+
+
+<!-- iDevices & Retina Favicons -->
+  <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-72x72.png" sizes="72x72">
+  <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-114x114.png" sizes="114x114">
+  <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-144x144.png" sizes="144x144">
+  <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon.png">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://web.archive.org/web/20210623013400mp_/https://zasha.tech/favicon-16x16.png">
+  <link rel="manifest" href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <!--  Desktop Favicons  -->
+  <link rel="icon" type="image/png" href="https://web.archive.org/web/20210623013400mp_/http://zasha.tech/avicon-32x32.png" sizes="32x32">
+
+  <link href="index_files/css.css" rel="stylesheet"> 
+  <link href="index_files/css_002.css" rel="stylesheet">
+  <link rel="stylesheet" href="index_files/devicon.min.css">
+  <link rel="stylesheet" href="index_files/all.css">
+  
+
+  <script src="index_files/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="index_files/slick.css">
+  <link rel="stylesheet" href="index_files/style.css">
+  <link rel="stylesheet" href="index_files/bootstrap-grid.css">
+  <link rel="stylesheet" href="index_files/demo.css">
+        
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="index_files/js"></script>
+<script>var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+let window = _____WB$wombat$assign$function_____("window");
+let globalThis = _____WB$wombat$assign$function_____("globalThis");
+let self = _____WB$wombat$assign$function_____("self");
+let document = _____WB$wombat$assign$function_____("document");
+let location = _____WB$wombat$assign$function_____("location");
+let top = _____WB$wombat$assign$function_____("top");
+let parent = _____WB$wombat$assign$function_____("parent");
+let frames = _____WB$wombat$assign$function_____("frames");
+let opener = _____WB$wombat$assign$function_____("opener");
+{
+window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-71958992-1');
+  gtag('set', {'user_id': 'USER_ID'}); // Set the user ID using signed-in user_id.
+  ga('set', 'userId', 'USER_ID'); // Set the user ID using signed-in user_id.
+
+}}</script>
+
+
+
+<!-- Facebook Pixel Code -->
+<script>var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+let window = _____WB$wombat$assign$function_____("window");
+let globalThis = _____WB$wombat$assign$function_____("globalThis");
+let self = _____WB$wombat$assign$function_____("self");
+let document = _____WB$wombat$assign$function_____("document");
+let location = _____WB$wombat$assign$function_____("location");
+let top = _____WB$wombat$assign$function_____("top");
+let parent = _____WB$wombat$assign$function_____("parent");
+let frames = _____WB$wombat$assign$function_____("frames");
+let opener = _____WB$wombat$assign$function_____("opener");
+{
+!function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '273298317158134');
+  fbq('track', 'PageView');
+
+}}</script>
+<noscript><img height="1" width="1" style="display:none" src="https://web.archive.org/web/20210623013400im_/https://www.facebook.com/tr?id=273298317158134&amp;ev=PageView&amp;noscript=1"></noscript>
+<!-- End Facebook Pixel Code -->
+
+    
+    
+
+
+<!-- <div id="showMenu" style="position: absolute; z-index: 1; right: 2%; top: 2%; background-color: transparent; cursor: pointer;">    
+<i  class="showMenu devicon-windows8-original dev-icon colored" style=" font-size: 3em;"></i>
+</div> -->
+
+
+<div class="navi" id="navi" style="top: 0px; width: 100vw; background-color: rgba(16,73,77,0.8);">
+<div class="container bg-inverse">
+    <div class="row d-flex align-items-center align-content-center justify-content-center h-100 w-100">
+        
+
+        <div id="exitmenu" class="position-absolute" style="position: absolute; z-index: 11; cursor: pointer; right: 3vw; top: 3vh;">
+            <i class="fa fa-5x fa-times-circle" style="color: white; font-size: 3em;"></i>
+        </div>
+
+
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="content">
+                <nav class="menu menu--mohe">
+                    <!-- <a class="menu__item" href="#">
+                        <span class="menu__item-name">crafts</span>
+                        <span class="menu__item-label">witness my creations</span>
+                    </a> 
+                    <a class="menu__item" href="#">
+                        <span class="menu__item-name">skills</span>
+                        <span class="menu__item-label">discover my innerself</span>
+                    </a>
+                    <a class="menu__item" href="#">
+                        <span class="menu__item-name">tools</span>
+                        <span class="menu__item-label">crafted for everyone</span>
+                    </a>
+                    <a class="menu__item" href="#">
+                        <span class="menu__item-name">playground</span>
+                        <span class="menu__item-label">playtime is a must</span>
+                    </a>
+                    <a class="menu__item" href="#">
+                        <span class="menu__item-name">communicate</span>
+                        <span class="menu__item-label">get in touch with me</span>
+                    </a>-->
+                    <a class="menu__item" href="#" style="transform: scale(2.2);">
+                        <span class="menu__item-name">an awesome menu</span>
+                        <span class="menu__item-label">is coming soon</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+      <div class="cur">
+        <div class="welcome cur">
+           <div class="zoom">
+            <div class="top-animation">
+              <table class="top-animation-table">
+                <tbody>
+                  <tr>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                    <td class="pixel"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="name-container"><p class="name">Z A H I D&nbsp;&nbsp;S H A I K H</p></div>
+  </div>
+
+  <div class="left-animation">
+    <div class="left-animation-cont"><table class="left-animation-table">
+        <tbody><tr class="pixel-container">
+          <td class="pixel"></td>
+          <td class="pixel"></td>
+          <td class="pixel"></td>
+        </tr>
+        <tr class="pixel-container">
+          <td class="pixel"></td>
+          <td class="pixel"></td>
+          <td class="pixel"></td>
+        </tr>
+        <tr class="pixel-container">
+          <td class="pixel"></td>
+          <td class="pixel"></td>
+          <td class="pixel"></td>
+        </tr>
+    </tbody></table></div><div class="hourglass-container">
+      <svg version="1.1" class="hourglass1" viewBox="0 0 286 405" style="enable-background:new 0 0 286 405;" xml:space="preserve">
+   <polygon class="hourglass" points="0.5,-0.5 280.5,83.5 0.5,399.5 274.5,352.5 "></polygon>
+   </svg>
+    </div>
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div> 
+    <div class="chain">
+      <div class="chain-f">
+          <div class="inside-chain"></div>
+      </div>
+      <div class="chain-f"></div>
+      <div class="chain-f"></div>
+  </div>
+  </div><div class="me-container">
+      <img class="me" src="index_files/za.png">
+  </div><div class="right-animation"> <div class="left-animation-cont"><table class="left-animation-table">
+    <tbody><tr class="pixel-container">
+      <td class="pixel"></td>
+      <td class="pixel"></td>
+      <td class="pixel"></td>
+    </tr>
+    <tr class="pixel-container">
+      <td class="pixel"></td>
+      <td class="pixel"></td>
+      <td class="pixel"></td>
+    </tr>
+    <tr class="pixel-container">
+      <td class="pixel"></td>
+      <td class="pixel"></td>
+      <td class="pixel"></td>
+    </tr>
+</tbody></table></div><div class="hourglass-container">
+  
+<svg version="1.1" class="hourglass1" viewBox="0 0 286 405" style="enable-background:new 0 0 286 405;" xml:space="preserve">
+<polygon class="hourglass" points="0.5,-0.5 280.5,83.5 0.5,399.5 274.5,352.5 "></polygon>
+</svg>
+
+</div>
+<div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div> 
+<div class="chain">
+  <div class="chain-f">
+      <div class="inside-chain"></div>
+  </div>
+  <div class="chain-f"></div>
+  <div class="chain-f"></div>
+</div>
+  </div>
+           </div>
+        </div>
+        <div class="about">
+
+          <!-- <div class="me-about mobile me-about-m">
+            <div class="age"><span style="font-size: 111px;">O</span><br><span style="font-size:20px;"></span></div>
+            <div class="me-bg"></div>
+          </div> -->
+            <div class="about-text">
+              <!-- <h1 class="about-title">обо мне</h1> -->
+              <p>My name is Zahid Shaikh, An Animator, Designer, Healer 
+&amp; Developer with a vast experience. An Indigo personality. Currently
+ providing creative &amp; technical services to various industries from 
+Versova the heart of Mumbai, India. My skillsets ranges from Motion 
+Graphics, Visual Effects Supervisor &amp; Artist (Post Production), Web 
+Design &amp; Development, Video Production, Virtual Reality Videos for 
+Education &amp; Entertainment. </p>
+              <p>I have worked on main stream projects for different 
+industries from Corporate to Films to NGOs and have accumulated enormous
+ amount of expertise. I have self learned it all on my own. Hands on 
+experience. Creative arts is my passion gushing in my veins. </p>
+              <p>In short, if you have a digital problem, I would be 
+honored to solve it. I have faced many challenges and have tackled them 
+with a wise spirit. In 2017 Just out of curiosity I took the <a href="https://web.archive.org/web/20210623013400mp_/http://test.mensa.no/" title="Mensa IQ Test"> MENSA IQ Test</a> and scored a surprising 93.7 percentile. It was a fun test.</p>
+              <p>In 2018 I started volunteering for an 80G certified NGO name <a href="https://web.archive.org/web/20210623013400mp_/http://htdc.co.in/" title="Holistic Training and Development Centre NGO"> Holistic Training and Development Centre.</a> HTDC's vision and mission are quite similar to mine. I learnt Reiki Healing under the guidance Of Ms. <a href="https://web.archive.org/web/20210623013400mp_/http://nskandoi.com/" title="Namrata Kandoi">Namrata Kandoi</a> the founder of HTDC.</p>
+              <p>I have also made a blog to share my knowledge and experiences. <a href="https://web.archive.org/web/20210623013400mp_/https://zahidshaikh.com/blog" title="Zahid Shaikh's Blog">Click here to read my blog.</a></p>
+            </div>
+          <!-- <div class="me-about desktop">
+            <div class="age"><span style="font-size: 111px;">O</span><br><span style="font-size:20px;"></span></div>
+            <div class="me-bg"></div>
+          </div> -->
+        </div>
+
+        <div class="skills">
+          <p class="skills-title skill-t" style="padding-top: 30px;"><i class="fas fa-chevron-right a-r"></i>My Skills</p><br>
+          <div style="padding-top:20px;padding-bottom: 20px;"><div class="skill-container">
+             <div class="skill html-card">
+              <div class="number">01</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">HTML5</p><br>
+                <p class="skill-title">Design</p>
+                <i class="devicon-html5-plain html dev-icon"></i>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div><div class="skill-container">
+             <div class="skill html-card css-card">
+              <div class="number">02</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">CSS3</p><br>
+                <p class="skill-title">Design &amp; Animation</p>
+                 <i class="devicon-css3-plain dev-icon"></i>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div><div class="skill-container">
+             <div class="skill html-card js">
+              <div class="number">03</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">Motion Graphics</p><br>
+                <p class="skill-title">Video &amp; Animation</p>
+                 <i class="far fa-play-circle dev-icon"></i>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div><div class="skill-container">
+             <div class="skill html-card">
+              <div class="number">04</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">VFX</p><br>
+                <p class="skill-title">Post Production</p>
+                  <i class="fas fa-chess-board dev-icon"></i>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div><div class="skill-container">
+             <div class="skill html-card">
+              <div class="number">05</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">Tech Support</p><br>
+                <p class="skill-title">I.T.</p>
+                 <i class="fas fa-envelope dev-icon"></i>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div><div class="skill-container">
+             <div class="skill html-card">
+              <div class="number">06</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">Branding</p><br>
+                <p class="skill-title">Design &amp; Animation</p>
+                  <i class="fas fa-chess-king dev-icon"></i>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div><div class="skill-container">
+             <div class="skill html-card">
+              <div class="number">07</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">PHP / Javascript</p><br>
+                <p class="skill-title">Development</p><br>
+                <div style="display: flex; justify-content: center;">
+                   <i class="devicon-php-plain dev-icon" style="display: inline-block; padding-right: 5px;"></i>
+                   <i class="devicon-javascript-plain dev-icon" style="display: inline-block;"></i>
+                  </div>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div><div class="skill-container">
+             <div class="skill html-card android-card">
+              <div class="number">08</div>
+              <div class="corner-top-left corner"></div>
+              <div class="corner-top-right corner"></div>
+              <div class="corner-bottom-left corner"></div>
+              <div class="corner-bottom-right corner"></div>
+              <div class="skill-content">
+                <p class="skill-title">Mentoring</p><br>
+                <p class="skill-title">Tech Mentoring</p>
+                 <i class="fas fa-chalkboard-teacher dev-icon"></i>
+              </div>
+            </div>
+            <div class="progress html">
+              <ul class="progress-bars">
+                <li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li><li class="bar"></li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+        <div class="projects">
+          <p class="skills-title project-t" style="font-family: 'Cousine', monospace;margin-left: 20px;padding-top: 30px;margin-bottom: 0;"><i class="fas fa-chevron-right a-r"></i>Few Projects</p><br>
+          <div style="position: relative;">
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="nxt"><i class="fas fa-chevron-right"></i></button>
+            <div class="multiple-items">  
+
+              <div class="project">
+                  <a href="https://web.archive.org/web/20210623013400mp_/https://www.youtube.com/watch?v=W_x-HF8gbjw" target="_blank">
+                <div class="project-img tiffany">
+                  <div class="project-number">01</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Motion Graphics</div>
+                    <div class="project-title">Hello Party Mix</div>
+                  </div>
+                </div>
+                  </a>
+              </div>
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/https://www.youtube.com/watch?v=q-_rS3KWtKQ" target="_blank">
+                <div class="project-img quickCode">
+                  <div class="project-number">02</div>
+                  <div class="project-detail">
+                    <div class="project-trata">VFX</div>
+                    <div class="project-title">Shoppers<br>Stop</div>
+                  </div>
+                </div>
+                </a>
+              </div>
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/https://www.youtube.com/watch?v=zm27oqoYXPU" target="_blank">
+                <div class="project-img newyear">
+                  <div class="project-number">03</div>
+                  <div class="project-detail">
+                    <div class="project-trata">VFX</div>
+                    <div class="project-title">HP<br>New Year India</div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/https://www.youtube.com/watch?v=dI_Imqq0GUg" target="_blank">
+                <div class="project-img biba">
+                  <div class="project-number">04</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Editing</div>
+                    <div class="project-title">Biba Nachdi<br>Making</div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/https://www.youtube.com/watch?v=tophR4Hk1pI" target="_blank">
+                <div class="project-img naezy">
+                  <div class="project-number">05</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Editing</div>
+                    <div class="project-title">Marshmello x Naezy<br></div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/https://www.youtube.com/watch?v=Qy0GTGz8Uno" target="_blank">
+                <div class="project-img shir">
+                  <div class="project-number">06</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Editing</div>
+                    <div class="project-title">Biba | Shirley Setia<br></div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/http://www.irina-krutikova.com/ru/about.php" target="_blank">
+                <div class="project-img sql">
+                  <div class="project-number">07</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Website</div>
+                    <div class="project-title">Irina<br>Krutikova</div>
+                  </div>
+                </div>
+                </a>
+              </div>
+              <div class="project d-none">
+                <a href="https://web.archive.org/web/20210623013400mp_/http://www.jodhpuries.com/" target="_blank">
+                <div class="project-img code">
+                  <div class="project-number">08</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Website</div>
+                    <div class="project-title">Jodhpuries</div>
+                  </div>
+                </div>
+                </a>
+              </div>
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/http://legateau.in/" target="_blank">
+                <div class="project-img cake">
+                  <div class="project-number">08</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Website</div>
+                    <div class="project-title">Legateau Cakes</div>
+                  </div>
+                </div>
+                </a>
+              </div> 
+              <div class="project">
+                <div class="project-img school">
+                  <div class="project-number">09</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Branding</div>
+                    <div class="project-title">Vivify<br></div>
+                  </div>
+                </div>
+              </div>
+              <div class="project">
+                <div class="project-img phone">
+                  <div class="project-number">10</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Branding</div>
+                    <div class="project-title">Twin Flame</div>
+                  </div>
+                </div>
+              </div>
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/http://nskandoi.com/" target="_blank">
+                <div class="project-img nsk">
+                  <div class="project-number">11</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Website</div>
+                    <div class="project-title">Namrata Kandoi</div>
+                  </div>
+                </div>
+                </a>
+              </div> 
+              <div class="project">
+                <a href="https://web.archive.org/web/20210623013400mp_/http://bestbuyit.co.in/" target="_blank">
+                <div class="project-img bbit">
+                  <div class="project-number">12</div>
+                  <div class="project-detail">
+                    <div class="project-trata">Website</div>
+                    <div class="project-title">BBIT</div>
+                  </div>
+                </div>
+                </a>
+              </div> 
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="contact-me">
+          <container>
+            <loader>
+              <a href="mailto:itsme@zahidshaikh.com?&amp;subject=Greetings,%20When%20can%20we%20have%20a%20talk?&amp;body=I%20really%20like%20your%20work,%20Can%20we%20have%20a%20talk%20regarding...">itsme@zahidshaikh.com</a>
+            </loader>
+            <loader>
+              <a href="https://web.archive.org/web/20210623013400mp_/https://www.facebook.com/zsyboy/">
+                <i class="fab fa-2x fa-facebook"></i>
+              </a>
+              <a href="https://web.archive.org/web/20210623013400mp_/https://www.quora.com/profile/Zahid-Shaikh-30">
+                <i class="fab fa-2x fa-quora"></i>
+              </a>
+              <a href="https://web.archive.org/web/20210623013400mp_/https://www.linkedin.com/in/shaikhzahid/">
+                <i class="fab fa-2x fa-linkedin"></i>
+              </a>
+              <a href="https://web.archive.org/web/20210623013400mp_/https://in.pinterest.com/shaikhza/">
+                <i class="fab fa-2x fa-pinterest"></i>
+              </a>
+              <a href="https://web.archive.org/web/20210623013400mp_/https://stackoverflow.com/users/1838319/zahid-l-shaikh">
+                <i class="fab fa-2x fa-stack-overflow"></i>
+              </a>
+            </loader>
+          </container>
+        <div class="copyrights">
+          <div class="about-text">
+            All icons used in this page are respective copyright 
+materials of their original creators. All works and design potrayed here
+ belong to Zahid Shaikh with copyrights being held to the respective 
+Media Holders. Anyone using these materials without permission are to be
+ solely reponsible for any infringment.
+          </div>
+        </div>
+        </div>
+
+
+</div>
+        <script src="index_files/slick.min.js"></script>
+        <script src="index_files/code.js"></script>
+        <script src="index_files/functi.js"></script>
+        <script src="index_files/charming.min.js"></script>
+        <script src="index_files/anime.min.js"></script>
+        <!-- <script src="js/demo.js"></script> -->
+        <script src="index_files/menuanime.js"></script>
+
+
+
+    
+
+
+</body></html>
+<!--
+     FILE ARCHIVED ON 01:34:00 Jun 23, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:53:25 Apr 06, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.86
+  exclusion.robots: 0.052
+  exclusion.robots.policy: 0.038
+  esindex: 0.015
+  cdx.remote: 8.141
+  LoadShardBlock: 273.845 (3)
+  PetaboxLoader3.resolve: 546.879 (4)
+  PetaboxLoader3.datanode: 83.259 (4)
+  load_resource: 399.889
+-->

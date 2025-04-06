@@ -1,0 +1,251 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+
+body {	
+/*	min-height: 100vh;
+	color: #57585c;
+	color: var(--color-text);
+	background-color: #fff;
+	background-color: var(--color-background);*/
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Color schemes */
+.demo-adsila {
+	--color-text: #57585c;
+	--color-background: #fff;
+	--color-link: #5d93d8;
+	--color-link-hover: #423c2b;
+}
+
+.demo-tsula {
+	--color-text: #fafae5;
+	--color-background: #222328;
+	--color-link: #4f515a;
+	--color-link-hover: #fafae5;
+}
+
+.demo-inola {
+	--color-text: #8c8c8c;
+	--color-background: #1f1e1e;
+	--color-link: rgba(229,211,56,1);
+	--color-link-hover: #8c8c8c;
+}
+
+.demo-ama {
+	--color-text: #9a9da7;
+	--color-background: #fff;
+	--color-link: #32343c;
+	--color-link-hover: #9a9da7;
+}
+
+.demo-yona {
+	--color-text: #000;
+	--color-background: #4520f3;
+	--color-link: #fff;
+	--color-link-hover: #000;
+}
+
+.demo-salal {
+	--color-text: #b5b5b5;
+	--color-background: #222325;
+	--color-link: #515152;
+	--color-link-hover: #fff;
+}
+
+.demo-dustu {
+	--color-text: #fff;
+	--color-background: #161616;
+	--color-link: #565656;
+	--color-link-hover: #fff;
+}
+
+.demo-mohe {
+	--color-text: #171754;
+	--color-background: #2b34f5;
+	--color-link: #9ad6fc;
+	--color-link-hover: #171754;
+}
+
+/* Fade effect */
+.js body {
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.js body.render {
+	opacity: 1;
+}
+
+
+a:hover,
+a:focus {
+	color: #423c2b;
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+
+main {
+	position: relative;
+	width: 100%;
+}
+
+.content {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 3em 2em;
+}
+
+.content--fixed {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	display: grid;
+	align-content: space-between;
+	width: 100%;
+	max-width: none;
+	height: 100vh;
+	padding: 1.5em;
+	pointer-events: none;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto auto 4em;
+	grid-template-areas: 'header ...'
+	'... ...'
+	'github demos';
+}
+
+.content--fixed a {
+	pointer-events: auto;
+}
+
+
+/* Common styles for the menus */
+.menu {
+	position: relative;
+	z-index: 10;
+}
+
+.menu__item {
+	line-height: 1;
+	position: relative;
+	display: block;
+	margin: 1em 0;
+	outline: none;
+	text-decoration: none;
+}
+
+.menu__item-name,
+.menu__item-label {
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.menu__item-name {
+	font-size: 1.25em;
+}
+
+.menu__item-label {
+	margin: 0 0 0 0.5em;
+	text-decoration: none;
+}
+
+@media screen and (min-width: 50em) {
+	.icon--keyboard {
+		position: absolute;
+		right: 0.55em;
+		bottom: -30%;
+		display: block;
+		width: 54px;
+		height: 46px;
+		fill: var(--color-link);
+	}
+	.demos {
+		display: flex;
+		padding-right: 80px;
+
+		justify-self: end;
+	}
+	.demo {
+		display: block;
+		width: 17px;
+		height: 17px;
+		margin: 0 5px 0 0;
+		border: 2px solid;
+		border-radius: 2px;
+	}
+	a.demo--current {
+		background: currentColor;
+	}
+	.demo span {
+		position: absolute;
+		top: -0.2em;
+		right: 100%;
+		display: none;
+		margin: 0 1em 0 0;
+	}
+	.demo--current span {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 50em) {
+	html,
+	body {
+		overflow-x: hidden;
+		width: 100vw;
+		height: 100%;
+	}
+	.content {
+		height: auto;
+		min-height: 0;
+		padding-bottom: 10em;
+	}
+	.content--fixed {
+		position: relative;
+		z-index: 1000;
+		display: block;
+		padding: 0.85em;
+	}
+	
+}
+
+/*
+     FILE ARCHIVED ON 11:05:07 Feb 27, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:53:28 Apr 06, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.712
+  exclusion.robots: 0.049
+  exclusion.robots.policy: 0.032
+  esindex: 0.015
+  cdx.remote: 32.383
+  LoadShardBlock: 717.551 (3)
+  PetaboxLoader3.datanode: 84.137 (4)
+  PetaboxLoader3.resolve: 915.098 (2)
+  load_resource: 339.477
+*/
